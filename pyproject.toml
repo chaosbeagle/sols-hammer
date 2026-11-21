@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sols-hammer"
+version = "0.1.0"
+description = "Independent batched H&E inspection with GPT-6.2 Sol Ultrafast"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE.md"]
+requires-python = ">=3.10"
+dependencies = ["pathology-vision-tools>=0.1,<0.2"]
+
+[project.optional-dependencies]
+openslide = ["pathology-vision-tools[openslide]>=0.1,<0.2"]
+
+[project.scripts]
+sols-hammer-lung = "sols_hammer.regional:main"
+sols-hammer = "sols_hammer.hybrid_entry:main"
+
+[project.urls]
+Repository = "https://github.com/chaosbeagle/sols-hammer"
+
+[tool.setuptools.packages.find]
+include = ["sols_hammer*"]
